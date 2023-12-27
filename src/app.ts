@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
 import { IApp, IMiddleware, IController } from './interfaces'
+import config from './config'
 
 class App {
 	private app: Application
@@ -9,6 +10,10 @@ class App {
 		this.app = express()
 		this.port = app.port
 		
+		if (config.NODE_ENV === 'production') {
+			this.app.set('trust proxy', true)
+		}
+		
 		this.app.disable('x-powered-by')
 		
 		this.middlewares(app.middlewares)
@@ -16,15 +21,13 @@ class App {
 	}
 	
 	private middlewares(middlewares: IMiddleware): void {
-		middlewares.forEach(middleware => {
-			this.app.use(middleware)
-		})
+		middlewares.forEach(middleware =>
+			this.app.use(middleware))
 	}
 	
 	private routes(controllers: IController): void {
-		controllers.forEach(controller => {
-			this.app.use(controller.path, controller.router)
-		})
+		controllers.forEach(controller =>
+			this.app.use(controller.path, controller.router))
 	}
 	
 	public listen(): void {
