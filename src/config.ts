@@ -1,9 +1,4 @@
-export interface IConfig {
-	NODE_ENV: string
-	PORT: number
-	ORIGIN: string[]
-	CREDENTIALS: boolean
-}
+import { IConfig } from './interfaces'
 
 const config: IConfig = {
 	NODE_ENV: process.env.NODE_ENV!,
