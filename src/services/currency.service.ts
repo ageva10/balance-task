@@ -20,11 +20,7 @@ export default class CurrencyService {
 					})
 					
 					response.on('end', () => {
-						const file: string = isNew
-							? path.join(__dirname, `../assets/${uuidv4()}.csv`)
-							: this.filename
-						
-						if (!isNew) fs.writeFileSync(file, data, 'utf8')
+						if (!isNew) fs.writeFileSync(this.filename, data, 'utf8')
 						return resolve(data.split('\n').filter(Boolean))
 					})
 					

@@ -38,7 +38,7 @@ class CurrencyController {
 			
 			const { url } = req.body
 			const currencies: any = await this.currencyService.downloadCSV(url, this.currencies.length > 0)
-			this.currencies = [...this.currencies, ...currencies]
+			this.currencies = Array.from(new Set([...this.currencies, ...currencies]))
 			await this.currencyService.writeToCSV(this.currencies)
 			return res.status(200).end()
 			
