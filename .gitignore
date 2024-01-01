@@ -1,6 +1,7 @@
 .idea
 .vscode
 .env
+assets
 node_modules
 package-lock.json
 yarn.lock
