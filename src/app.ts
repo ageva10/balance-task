@@ -32,7 +32,7 @@ class App {
 	
 	public listen(): void {
 		this.app.listen(this.port, (): void => {
-			console.log(`App listening on the http://localhost:${this.port}`)
+			console.log(`Server is running on http://localhost:${this.port}`)
 		})
 	}
 }
