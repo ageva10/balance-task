@@ -10,12 +10,12 @@ dotenv.config({ path: envPath })
 
 import App from './app'
 import config from './config'
-import { TestController } from './controllers'
+import { CurrencyController } from './controllers'
 
 const app = new App({
 	port: config.PORT,
 	controllers: [
-		new TestController()
+		new CurrencyController()
 	],
 	middlewares: [
 		cors({

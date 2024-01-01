@@ -1,5 +1,5 @@
-import TestController from './test.controller'
+import CurrencyController from './currency.controller'
 
 export {
-	TestController
+	CurrencyController
 }
